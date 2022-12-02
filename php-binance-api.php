@@ -680,6 +680,27 @@ class API
     }
     
     /**
+     * symbolInfo Gets the complete ticker info.
+     * 
+     * $info = $api->symbolInfo('DOGEUSDT', 'filters');
+     * 
+     * @param $symbol string the currency symbol
+     * @param $filter is one key into array to return, empty return all data
+     * @return array with ticker info array or empty array
+     */
+    public function symbolInfo(string $symbol, string $filter = null) : array
+    {
+        $return = []; 
+        foreach( $this->exchangeInfo()['symbols'] as $key => $value)
+        {
+            if ($symbol == $key) {
+                $return = $filter ? $value[$filter] : $value;
+            }
+        }
+        return $return;
+    }
+    
+    /**
      * assetDetail - Fetch details of assets supported on Binance
      * 
      * @link https://binance-docs.github.io/apidocs/spot/en/#asset-detail-user_data
