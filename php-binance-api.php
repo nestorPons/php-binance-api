@@ -1256,7 +1256,9 @@ class API
      * @return array containing the response
      * @throws \Exception
      */
-    protected function httpRequest(string $url, string $method = "GET", array $params = [], bool $signed = false)
+    protected function httpRequest(string $url, string $method = "GET", array $params = [], bool $signed = false) : 
+
+?array 
     {
         if (function_exists('curl_init') === false) {
             throw new \Exception("Sorry cURL is not installed!");
@@ -2829,12 +2831,12 @@ class API
         $this->xMbxUsedWeight1m = $usedWeight1m;
     }
 
-    public function getXMbxUsedWeight() : int
+    public function getXMbxUsedWeight() : void
     {
         return $this->xMbxUsedWeight;
     }
 
-    public function getXMbxUsedWeight1m() : int
+    public function getXMbxUsedWeight1m() : void
     {
         return $this->xMbxUsedWeight1m;
     }
